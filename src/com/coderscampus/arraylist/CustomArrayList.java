@@ -54,13 +54,15 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T remove(int index) {
-		T removedItem;
-		if (index < size) {
+		T removedItem = null;
+		if (index <= items.length && index < size) {
 			removedItem = (T)items[index];
 			for (int i = index; i < size; i++) {
 				items[i] = items[i+1];
 			}
 			size--;
+		} else if (index <= items.length && index >= size) {
+			System.out.println("+++++ index exists, but there's noting to remove! +++++");
 		} else throw new IndexOutOfBoundsException("index doesn't exist!");
 				
 		return removedItem;

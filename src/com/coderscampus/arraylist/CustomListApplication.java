@@ -49,7 +49,10 @@ public class CustomListApplication {
 		Integer indexRemoveElement = scanner.nextInt();
 		
 		try { 
-			System.out.println("\nElement \"" + integers.remove(indexRemoveElement) + "\" at index " + indexRemoveElement + " has been removed from the list.");
+			Integer removedItem = integers.remove(indexRemoveElement);
+			if (removedItem != null) {
+				System.out.println("\nElement \"" + removedItem + "\" at index " + indexRemoveElement + " has been removed from the list.");
+			}			
 		}
 		catch (IndexOutOfBoundsException e) {
 			System.out.println("\n+++++ ERROR: that index doesn't exist! +++++");
