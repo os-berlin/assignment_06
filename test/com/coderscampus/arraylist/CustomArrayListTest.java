@@ -45,9 +45,14 @@ class CustomArrayListTest {
 			sut.add(i);
 		}
 		
+		Integer newSize = sut.getSize()+1;
 		sut.add(index, 1000);
+		Integer size = sut.getSize();
+		
 		
 		assertEquals(1000, sut.get(index));
+		assertEquals (size, newSize);
+
 	}
 	
 	@Test
@@ -63,12 +68,21 @@ class CustomArrayListTest {
 		
 		Integer nextItem = sut.get(index+1);	
 		Integer newSize = sut.getSize()-1;
+		
 		sut.remove(index);
+		
 		Integer removedItem = sut.get(index);
 		Integer size = sut.getSize();
 		
+		boolean notNull = true;
+		for (int i=0; i < sut.getSize(); i++ ) {
+			if (sut.get(i) == null) notNull = false;
+		}
+		
 		assertEquals(removedItem, nextItem);
 		assertEquals(size, newSize);
+		assertEquals(true, notNull);
+		
 			
 	}
 
