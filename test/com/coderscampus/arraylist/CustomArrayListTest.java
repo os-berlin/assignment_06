@@ -37,7 +37,7 @@ class CustomArrayListTest {
 	void should_insert_item_at_index_into_list () {
 		int sutSize = 30;
 		int index = 5;
-		//if (sutSize == index) this test fails but I guess it's OK since throwing and OutOfBoundsException is expected
+		//if (sutSize == index) this test fails but I guess it's OK since throwing an OutOfBoundsException is expected
 		//or how should I test explicitly for that exception?
 		
 		CustomList<Integer> sut = new CustomArrayList<>();
@@ -47,21 +47,23 @@ class CustomArrayListTest {
 		
 		Integer newSize = sut.getSize()+1;
 		sut.add(index, 1000);
-		Integer size = sut.getSize();
+		Integer initialSize = sut.getSize();
 		
 		
 		assertEquals(1000, sut.get(index));
-		assertEquals (size, newSize);
+		assertEquals (initialSize, newSize);
 
 	}
 	
 	@Test
 	void should_remove_item_from_list () {
-		int x = 24;
-		int index = 5;
+		int sutSize = 24;
+		int index = 2;
+		//again, if (sutSize == index) this test fails but I guess it's OK since throwing an OutOfBoundsException is expected
+		
 		CustomList<Integer> sut = new CustomArrayList<>();
 		
-		for (int i=0; i < x; i++) {
+		for (int i=0; i < sutSize; i++) {
 			sut.add(i);
 		}
 		
@@ -72,7 +74,7 @@ class CustomArrayListTest {
 		sut.remove(index);
 		
 		Integer removedItem = sut.get(index);
-		Integer size = sut.getSize();
+		Integer initialSize = sut.getSize();
 		
 		boolean notNull = true;
 		for (int i=0; i < sut.getSize(); i++ ) {
@@ -80,7 +82,7 @@ class CustomArrayListTest {
 		}
 		
 		assertEquals(removedItem, nextItem);
-		assertEquals(size, newSize);
+		assertEquals(initialSize, newSize);
 		assertEquals(true, notNull);
 		
 			
